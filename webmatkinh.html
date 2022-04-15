@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNSTAR - Shop Mắt Kính Hàng Hiệu VN</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/CSS/style.css">
+    <script src="JS/bootstrap.min.js"> </script>
+    <script src="JS/jquery-3.6.0.min.js"> </script>
+
+
+<script>
+  var slideIndex = 1;
+ showSlides(slideIndex);
+function plusSlides(n) {
+   showSlides(slideIndex += n);
+ }
+function currentSlide(n) {
+   showSlides(slideIndex = n);
+ }
+function showSlides(n) {
+   var i;
+   var slides = document.getElementsByClassName("mySlides");
+   var dots = document.getElementsByClassName("dot");
+   if (n > slides.length) {slideIndex = 1}
+   if (n < 1) {slideIndex = slides.length}
+   for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+   }
+   for (i = 0; i < dots.length; i++) {
+       dots[i].className = dots[i].className.replace(" active", "");
+   }
+   slides[slideIndex-1].style.display = "block";
+   dots[slideIndex-1].className += " active";
+ }
+</script>
+
+
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      width: 100%;
+      padding: 7px 7px;
+      background-color: rgba(37, 127, 154, 0.411);
+    }
+    
+    .header {
+      background-color: rgba(37, 127, 154, 0.411);
+      padding: 20px;
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      color: rgb(32, 63, 67);
+      background-size: cover;
+    }
+
+    #menu {
+ width: 100%;
+ height: 300px;
+ background-color: rgba(37, 127, 154, 0.411);
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 20px;
+ list-style-type: none;
+  overflow: hidden;
+ background-image: none;
+}
+
+#menu a {
+  width: 140%;
+  padding: 0px;
+  font-size: 14px;
+  font-style: arial;
+}
+
+#menu li {
+  color: #526c8f;
+  display: inline-block;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 3px;
+  padding: 14px;
+}
+
+#menu a {
+  text-decoration: none;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  display:block;
+  border: #0f0d0d;
+}
+#menu a:hover {
+  background: #3373a092;
+  color: rgb(230, 230, 230);
+  padding: auto;
+  text-align: center;
+}
+
+.sub-menu li {
+  display: none;
+  text-align: left;
+}
+
+#menu li {
+ position: relative;
+ text-align: center;
+}
+
+.sub-menu {
+ display: none;
+ position: absolute;
+ text-align: left;
+}
+
+#menu li:hover .sub-menu {
+ display: block;
+}
+
+.sub-menu li {
+ margin-left: 0 !important;
+}
+
+    .content1 {
+      background-color: #51848e;
+      float: top;
+    }
+
+    .column-side {
+      text-align: center;
+      padding-bottom: 2px;
+    }
+    
+    .wrapper {
+  padding: 2rem;
+}
+
+.products ul {
+  display: inline-block;
+  padding: 40px;
+}
+
+.products ul .main-product {
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  display: block;
+  float: left;
+  width: 24%;
+}
+
+.products ul .no-margin {
+  margin-right: 0;
+}
+
+.products ul .img-product img {
+  width: 100%;
+}
+
+.content-product .content-product-h3 {
+  padding: .5rem 0;
+  overflow: hidden;
+  color: #222;
+  font-weight: 500px;
+  font-size: 16px;
+  max-height: 50px;
+  min-height: 50px;
+  text-align: center;
+  line-height: 19px;
+  margin: 0 0 5px;
+}
+
+.content-product .content-product-deltals {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.main-product .content-product .content-product-deltals .price {
+  color: #266246;
+  font-weight: 700;
+  margin-right: 1rem;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.content-product .content-product-deltals .price .money {
+  vertical-align: middle;
+}
+
+.content-product .content-product-deltals .btn-cart {
+  background: #266246;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.content-product .content-product-deltals .btn-cart:hover {
+  background: #266246;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  margin: 0 auto;
+  width: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: .3rem;
+  outline: 0;
+
+}
+
+.modal-body {
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: flex;
+  border-top: 1px solid #aaaaaa;
+  padding: 1rem;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 1px solid #aaaaaa;
+  padding: 1rem;
+}
+
+.modal-footer>:not(:first-child) {
+  margin-left: .25rem;
+}
+
+.btn {
+  cursor: pointer;
+  outline: none;
+  font-weight: 400;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: .25rem;
+  transition: all .2s ease-in-out;
+}
+
+.btn-secondary {
+  color: #292b2c;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+
+.modal-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #aaaaaa;
+  padding: 1rem;
+}
+
+h5.modal-title {
+  font-size: 1.5rem;
+}
+
+.close {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cart {
+  font-size: 2px;
+  color: #fff;
+  background: #0e4130;
+  border: 5px solid transparent;
+  border-radius: 10px;
+  outline: none;
+  margin-left: 1rem;
+  padding: 3px;
+  cursor: pointer;
+}
+
+#cart:hover {
+  border-color: #fff;
+}
+
+.wrapper {
+  padding: 2rem;
+}
+
+.products ul {
+  display: inline-block;
+}
+
+.products ul .main-product {
+  
+  margin-bottom: 1rem;
+  margin-right: 5rem;
+  display:inline-block;
+  width: 25%;
+  padding-left: 9rem;
+}
+
+.products ul .no-margin {
+  margin-right: 0;
+}
+
+.products ul .img-product img {
+  width: 100%;
+}
+
+.content-product .content-product-h3 {
+  padding: .5rem 0;
+  overflow: hidden;
+  color: #222;
+  font-weight: 500;
+  font-size: 15px;
+  max-height: 100px;
+  min-height: 50px;
+  text-align: center;
+  line-height: 30px;
+  margin: 0 0 10px;
+}
+
+.content-product .content-product-deltals {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  
+}
+
+.main-product .content-product .content-product-deltals .price {
+  color: #a89e44;
+  font-weight: 600px;
+  margin-right: 0.5rem;
+  vertical-align: left;
+  font-size: 18px;
+}
+
+.content-product .content-product-deltals .price .money {
+  vertical-align: middle;
+}
+
+.content-product .content-product-deltals .btn-cart {
+  background: #285837;
+  border-radius: 9px;
+  color: #fff;
+  font-weight: 140px;
+  font-size: 12px;
+}
+
+.content-product .content-product-deltals .btn-cart:hover {
+  background: #655413;
+}
+
+/* footer */
+.footer-item {
+  padding: .6rem 2rem;
+  background: #18333945;
+  display:flow-root;
+  font-size: 12px;
+  width: 100%;
+}
+    </style>
+
+
+    </head>
+
+
+<body>
+    
+    <div class="header">
+      <h1><b>VNSTAR - SHOP MẮT KÍNH HÀNG HIỆU VN</b></h1>
+    </div>
+
+    <!-- Thẻ Chứa Slideshow -->
+ <div class="slideshow-container">
+  <!-- Kết hợp hình ảnh và nội dung cho mội phần tử trong slideshow-->
+   <div class="mySlides fade">
+     <div class="numbertext">1 / 3</div>
+     <img src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/20466979.jpg" width="100%" height="470px">
+   </div>
+  <div class="mySlides fade">
+     <div class="numbertext">2 / 3</div>
+     <img src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/650255.jpg" width="100%" height="470px">    
+   </div>
+  <div class="mySlides fade">
+     <div class="numbertext">3 / 3</div>
+     <img src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/924632.jpg" width="100%" height="470px">    
+   </div>
+
+<!-- Nút điều khiển mũi tên-->
+<a class="prev" onclick="plusSlides(-1)">❮</a>
+<a class="next" onclick="plusSlides(1)">❯</a>
+</div>
+<br>
+<!-- Nút tròn điều khiển slideshow-->
+<div style="text-align:center">
+<span class="dot" onclick="currentSlide(1)"></span>
+<span class="dot" onclick="currentSlide(2)"></span>
+<span class="dot" onclick="currentSlide(3)"></span>
+</div>
+    
+<div id="menu">
+  <ul>
+    <li><a href="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/webmatkinh.html"><b>TRANG CHỦ</b></a></li>
+    <li><a href="#"><b>THƯƠNG HIỆU</b></a>
+      <ul class="sub-menu">
+        <li><a href="#"><b>GUCCI</b></a></li>
+        <li><a href="#"><b>DIOR</b></a></li>
+        <li><a href="#"><b>LOUIS VUITTON</b></a></li>
+      </ul>
+    </li>
+    <li><a href="#"><b>SẢN PHẨM</b></a>
+      <ul class="sub-menu">
+        <li><a href="#"><b>GỌNG KÍNH</b></a></li>
+        <li><a href="#"><b>TRÒNG KÍNH</b></a></li>
+      </ul>
+    </li>
+    <li><a href="#"><b>KHÁC</b></a></li>
+    <li><a href="#"><b>TÀI KHOẢN</b></a>
+      <ul class="sub-menu">
+        <li><a href="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/dangnhap.html"><b>ĐĂNG NHẬP</b></a></li>
+        <li><a href="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/dangkitaikhoan.html"><b>ĐĂNG KÝ</b></a></li>
+      </ul>
+    </li>
+    <li><a href="#"><b>GIỎ HÀNG</b></a></li>
+    <li><a href="#"><b>KHÁCH HÀNG</b></a></li>
+    <li><a href="#"><b>CHI NHÁNH</b></a></li>
+    <li><a href="#"><b>FANPAGE</b></a></li>
+    <li><a href="#"><b>INSTAGRAM</b></a></li>
+    <li><a href="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/Nhom1_ThongTinSinhVien.html"><b>LIÊN HỆ</b></a></li>
+  </ul>
+
+<div class="menu">
+  <img src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/banner.jpg" width="100%" height="220px">
+</div>
+
+</div>
+    <div class="content1">
+      <h3><center><marquee direction="left">CHÀO MỪNG BẠN ĐẾN VỚI VNSTAR - SHOP BÁN MẮT KÍNH HÀNG HIỆU CHẤT LƯỢNG HÀNG ĐẦU VIỆT NAM</marquee></center></h3>
+    </div>
+      <section class="wrapper">
+        <div class="products">
+          <h4><center><b>CÁC SẢN PHẨM TỐT NHẤT CỦA SHOP</b></center></h4>
+          <form><center>
+            <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." />
+            <button type="submit"><i class="fa fa-search" aria-hidden="true">Tìm kiếm</i></button>
+          </center>
+          </form>
+            <ul>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd"
+                            src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/dior1.jpg"alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">DIOR - CODE: D001</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">25.000.000 VNĐ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                  <div class="img-product">
+                      <img class="img-prd"
+                          src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/dior2.jpg"alt="">
+                  </div>
+                  <div class="content-product">
+                      <h3 class="content-product-h3">DIOR - CODE: D002</h3>
+                      <div class="content-product-deltals">
+                          <div class="price">
+                              <span class="money">41.000.000 VNĐ</span>
+                          </div>
+                          <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                      </div>
+                  </div>
+              </li>
+              <li class="main-product">
+                <div class="img-product">
+                    <img class="img-prd"
+                        src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/dior3.jpg"alt="">
+                </div>
+                <div class="content-product">
+                    <h3 class="content-product-h3">DIOR - CODE: D003</h3>
+                    <div class="content-product-deltals">
+                        <div class="price">
+                            <span class="money">57.000.000 VNĐ</span>
+                        </div>
+                        <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                    </div>
+                </div>
+            </li>
+
+    
+        <div class="products">
+            <ul>
+                <li class="main-product">
+                    <div class="img-product">
+                        <img class="img-prd"
+                            src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/gucci1.jpg"alt="">
+                    </div>
+                    <div class="content-product">
+                        <h3 class="content-product-h3">GUCCI - CODE: GC01</h3>
+                        <div class="content-product-deltals">
+                            <div class="price">
+                                <span class="money">5.100.000 VNĐ</span>
+                            </div>
+                            <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="main-product">
+                  <div class="img-product">
+                      <img class="img-prd"
+                          src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/gucci2.jpeg"alt="">
+                  </div>
+                  <div class="content-product">
+                      <h3 class="content-product-h3">GUCCI - CODE: GC02</h3>
+                      <div class="content-product-deltals">
+                          <div class="price">
+                              <span class="money">4.250.000 VNĐ</span>
+                          </div>
+                          <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                      </div>
+                  </div>
+              </li>
+              <li class="main-product">
+                <div class="img-product">
+                    <img class="img-prd"
+                        src="../BaiTapLon_PhamTuanAnh-HoSiBao_DeTaiSo1_HeCaoDang/IMG/dior3.jpg"alt="">
+                </div>
+                <div class="content-product">
+                    <h3 class="content-product-h3">GUCCI - CODE: GC03</h3>
+                    <div class="content-product-deltals">
+                        <div class="price">
+                            <span class="money">7.800.000 VNĐ</span>
+                        </div>
+                        <button type="button" class="btn btn-cart">+ Add to Cart</button>
+                    </div>
+                </div>
+            </li>
+
+        </div>
+
+
+        <center>
+          <button id="cart">
+            <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+            <h5><b>GIỎ HÀNG CỦA BẠN</b></h5>
+        </button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Giỏ Hàng</h5>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="cart-row">
+                        <span class="cart-item cart-header cart-column">Sản Phẩm</span>
+                        <span class="cart-price cart-header cart-column">Giá</span>
+                        <span class="cart-quantity cart-header cart-column">Số Lượng</span>
+                    </div>
+                    <div class="cart-items">
+      
+                    </div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Tổng Cộng:</strong>
+                        <span class="cart-total-price">0VNĐ</span>
+                    </div>
+                </div>
+      
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close-footer">Đóng</button>
+                    <button type="button" class="btn btn-primary order">Thanh Toán</button>
+                </div>
+            </div>
+      </div>
+      </center>
+
+
+    </section>
+      
+    
+      <div class="column-side">
+        <p><b> --- Mọi thông tin chi tiết xin gửi tin nhắn về 'Fanpage', 'Instagram' hoặc chọn tab 'Liên lạc' để được shop tư vấn và hỗ trợ ---</b></p>
+        
+      </div>
+    </div>
+    
+    <div class="footer-item">
+      <h6><center>BÀI TẬP LỚN - ĐỀ TÀI 1 (TẠO WEBSITE BÁN MẮT KÍNH)</center></h6> 
+      <p>Nhóm1_01_18014191_Phạm Tuấn Anh</p>
+      <p>Nhóm1_02_19630831_Hồ Sĩ Bảo</p>
+      <p>Mã Lớp Học Phần: 020300292801 (Hệ Cao Đẳng)</p>
+      <p>Giảng Viên: Đặng Văn Thuận</p>
+    </div>
+      
+</body>
+</html>
